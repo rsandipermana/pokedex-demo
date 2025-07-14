@@ -1,0 +1,36 @@
+<div class="pokemon" style="border: 2px solid #ffcb03">
+  <span class="number">#{{ pokemon.id | number : "3.0" }}</span>
+  <span
+    class="type-icon"
+    title="grass"
+    style="background-color: #ffcb03; box-shadow: #ffcb03 0px 0px 6px"
+  ></span>
+
+  <div class="img-container">
+    <img
+      loading="lazy"
+      [src]="pokemon.sprites.other.dream_world.front_default"
+      alt="{{ pokemon.name }}"
+    />
+  </div>
+  <div class="info">
+    <h3 class="name">{{ pokemon.name }}</h3>
+    <div class="extra-info">
+      <div>
+        <small>Weight</small>
+        <h5 class="weight">{{ pokemon.weight }}kg</h5>
+      </div>
+      <div>
+        <small>Height</small>
+        <h5 class="height">{{ pokemon.height }}m</h5>
+      </div>
+    </div>
+    <div class="type-data">
+      <small>Type:</small>
+      <h5 class="type" *ngFor="let type of pokemon.types; let i = index">
+        {{ type.type.name }}
+        <span *ngIf="i < pokemon.types.length - 1">/</span>
+      </h5>
+    </div>
+  </div>
+</div>

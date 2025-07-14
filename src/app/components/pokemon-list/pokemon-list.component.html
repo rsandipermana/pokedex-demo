@@ -1,0 +1,40 @@
+@defer {
+<div class="poke-container">
+  <app-pokemon-card
+    *ngFor="let pokemon of displayedPokemons()"
+    [pokemon]="pokemon"
+    (click)="openModal(pokemon)"
+  >
+  </app-pokemon-card>
+</div>
+
+<div class="pagination">
+  <button
+    (click)="prevPage()"
+    [disabled]="currentPage() === 1"
+    class="load-more"
+  >
+    <mat-icon>arrow_back_ios</mat-icon>
+  </button>
+  <button
+    *ngFor="let page of pages()"
+    [class.active]="page === currentPage()"
+    [disabled]="page === currentPage()"
+    (click)="goToPage(page)"
+    class="load-more"
+  >
+    {{ page }}
+  </button>
+  <button
+    (click)="nextPage()"
+    [disabled]="currentPage() === maxPage"
+    class="load-more"
+  >
+    <mat-icon>arrow_forward_ios</mat-icon>
+  </button>
+</div>
+} @loading {
+<div class="loader-container">Loading... <mat-spinner></mat-spinner></div>
+} @placeholder {
+<p class="loader-placeholder">Loading Pokémon list...</p>
+}

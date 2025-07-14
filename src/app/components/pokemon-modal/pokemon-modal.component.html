@@ -1,0 +1,95 @@
+<mat-card>
+  <mat-card-content>
+    <div class="pokemon">
+      <div class="pokemon-header">
+        <span class="number">#{{ data.id | number : "3.0" }}</span>
+        <button mat-icon-button (click)="closeModal()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+
+      <div class="img-container">
+        <img
+          loading="lazy"
+          [src]="data.sprites.other.dream_world.front_default"
+          alt="{{ data.name }}"
+        />
+      </div>
+      <div class="info">
+        <h3 class="name">{{ data.name }}</h3>
+        <div class="extra-info">
+          <div>
+            <small>Weight</small>
+            <h5 class="weight">{{ data.weight }}kg</h5>
+          </div>
+          <div>
+            <small>Height</small>
+            <h5 class="height">{{ data.height }}m</h5>
+          </div>
+        </div>
+        <div class="type-data">
+          <small>Type:</small>
+          <h5 class="type" *ngFor="let type of data.types; let i = index">
+            {{ type.type.name }}
+            <span *ngIf="i < data.types.length - 1">/</span>
+          </h5>
+        </div>
+        <div class="type-data">
+          <small>Abilities:</small>
+          <h5 class="type" *ngFor="let ability of data.abilities; let i = index">
+            {{ ability.ability.name }}
+            <span *ngIf="i < data.types.length - 1">,</span>
+          </h5>
+        </div>
+        <div class="type-data">
+          <small>Moves (first 5):</small>
+          <h5 class="type" *ngFor="let move of data.moves.slice(0, 5); let i = index">
+            {{ move.move.name }}
+            <span *ngIf="i < 4">,</span>
+          </h5>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+<!-- <mat-card>
+  <mat-card-header>
+    <mat-card-title class="pokemon-id"
+      >#{{ data.id | number : "3.0" }}</mat-card-title
+    >
+    <button mat-icon-button (click)="closeModal()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-card-header>
+  <mat-card-content>
+
+    <div class="pokemon-info-container">
+      <div class="pokemon-info">
+        <span>Height</span> <span>{{ data.height }}m</span>
+      </div>
+      <div class="pokemon-info">
+        <span>Weight</span> <span>{{ data.weight }}kg</span>
+      </div>
+    </div>
+    <p class="pokemon-type">
+      <span class="title">Type:</span>
+      <span *ngFor="let type of data.types; let i = index">
+        {{ type.type.name }}<span *ngIf="i < data.types.length - 1">/</span>
+      </span>
+    </p>
+    <p class="pokemon-type">
+      <span class="title">Abilities:</span>
+      <span *ngFor="let ab of data.abilities; let i = index">
+        {{ ab.ability.name
+        }}<span *ngIf="i < data.abilities.length - 1">, </span>
+      </span>
+    </p>
+
+    <p class="pokemon-type">
+      <span class="title">Moves (first 5):</span>
+      <span *ngFor="let move of data.moves.slice(0, 5); let i = index">
+        {{ move.move.name }}<span *ngIf="i < 4">, </span>
+      </span>
+    </p>
+  </mat-card-content>
+</mat-card> -->
